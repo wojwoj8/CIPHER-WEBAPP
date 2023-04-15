@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel-jest": "^29.5.0",
     "css-loader": "^6.7.3",
+    "sass": "^1.62.0",
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",
     "webpack": "^5.79.0",
