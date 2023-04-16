@@ -1,5 +1,4 @@
 import CryptoJS from 'crypto-js';
-import { Exception } from 'sass';
 
 const ciphers = (() => {
   // Encrypt Decrypt functions (AES, DES, RC4)

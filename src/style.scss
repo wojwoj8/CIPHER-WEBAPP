@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Tilt+Warp&display=swap');
+
+:root{
+    font-family: roboto;
+    --mainPadding: calc(min(10vw + 150px, 10%));
+    --headerColor: #6d28d9;
+    --sidebarColor: #f4f4f5;
+    --hoverColor: #bebebe;
+}
+body{
+    height: 100vh;
+    margin:0;
+    min-width: 670px;
+    /* background-color: red; */
+}
+#content{
+    height:100%;
+    display:grid;
+    grid-template-rows: 1fr 9fr 1fr;
+    grid-template-areas: 
+    "header header header"
+    "main main main"
+    "footer footer footer";
+    text-align: center;
+}
+/* HEADER PART */
+.header{
+    font-family: 'Tilt Warp';
+    background-color: var(--headerColor);
+    color: white;
+    grid-area: header;
+    /* border-bottom: 1px solid red; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN PART */
+.main{
+    grid-area: main;
+    padding: 0 var(--mainPadding);
+}
+.main-title{
+    display: flex;
+    flex-direction: column-reverse;
+    font-family: 'Tilt Warp';
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    h2{
+        margin:0
+    }
+
+    button{
+
+    font-weight: bold;
+    width:20%;
+    font-size: 1.5rem;
+    color: black;
+    border: 1px solid black;
+    border-radius: 30px;
+    // background-color: var(grey);
+    }
+}
+.inputDiv, .outputDiv{
+    p{
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+textarea{
+    width: 80vw;
+    height: 25vh;
+}
+.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+// .main-content-left, .main-content-right{
+//     display: flex;
+//     flex-direction: column;
+// }
+// .game-board{
+//     display: flex;
+// }
+
+// .cell{
+//     width: 60px;
+//     height: 60px;
+//     border: 1px solid black;
+// }
+
+/* FOOTER PART */
+.footer{
+    background-color: green;
+    grid-area: footer;
+    font-size: larger;
+    font-weight: bold;
+}
+
+// @media only screen and (max-width: 1575px){
+//     .main-content{
+//         flex-direction: column;
+//         align-items: center;
+//     }
+// }
