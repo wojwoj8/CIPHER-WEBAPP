@@ -131,7 +131,10 @@ function encryptHandler() {
   const inputValue = input.value;
   const inputDiv = document.querySelector('.inputDiv');
   const keyInput = document.querySelector('.keyInput');
-  const keyValue = keyInput.value;
+  let keyValue;
+  if (keyInput) {
+    keyValue = keyInput.value;
+  }
 
   output.innerHTML = '';
   if (selectedCipher === 'aes') {
@@ -140,6 +143,12 @@ function encryptHandler() {
     output.value = ciphers.encryptDES(inputValue, keyValue);
   } else if (selectedCipher === 'rc4') {
     output.value = ciphers.encryptRC4(inputValue, keyValue);
+  } else if (selectedCipher === 'md5') {
+    output.value = ciphers.encryptMD5(inputValue);
+  } else if (selectedCipher === 'sha256') {
+    output.value = ciphers.encryptSHA256(inputValue);
+  } else if (selectedCipher === 'sha512') {
+    output.value = ciphers.encryptSHA512(inputValue);
   }
 //   console.log(inputValue);
 //   console.log(selectedCipher);
