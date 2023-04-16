@@ -59,10 +59,10 @@ function createMainContent() {
   select.id = 'cipher-select';
   select.innerHTML = `
   <select id="cipher-select">
+    <option value="md5">MD5</option>
     <option value="aes">AES</option>
     <option value="des">DES</option>
     <option value="rc4">RC4</option>
-    <option value="md5">MD5</option>
     <option value="sha256">SHA256</option>
     <option value="sha512">SHA512</option>
   </select>`;
@@ -81,25 +81,33 @@ function createMainContent() {
 function createButtons() {
   const main = document.querySelector('.main');
   const buttonsDiv = document.createElement('div');
-  buttonsDiv.classList = 'buttonDiv';
+  buttonsDiv.classList = 'buttonsDiv';
   const button = document.createElement('button');
   button.textContent = 'encrypt';
+  button.classList = 'encryptButton';
   buttonsDiv.appendChild(button);
-  button.addEventListener('click', inputHandler);
+  button.addEventListener('click', encryptHandler);
   main.appendChild(buttonsDiv);
 }
 function selectHandler() {
   const cipherSelect = document.querySelector('#cipher-select');
   const selectedCipher = cipherSelect.value;
   const inputDiv = document.querySelector('.inputDiv');
+  const buttonsDiv = document.querySelector('.buttonsDiv');
   let keyInput = null;
 
   const existingKeyInput = inputDiv.querySelector('.keyInput');
+  const existingDecButt = buttonsDiv.querySelector('.decryptButton');
   if (existingKeyInput) {
     existingKeyInput.parentNode.remove();
+    existingDecButt.remove();
   }
 
   if (selectedCipher === 'aes' || selectedCipher === 'des' || selectedCipher === 'rc4') {
+    const button = document.createElement('button');
+    button.classList = 'decryptButton';
+    button.textContent = 'decrypt';
+    button.addEventListener('click', decryptHandler);
     const cont = document.createElement('div');
     keyInput = document.createElement('input');
     keyInput.classList = 'keyInput';
@@ -108,41 +116,55 @@ function selectHandler() {
     const inputLabel = document.createElement('label');
     inputLabel.setAttribute('for', 'additionalInputTextarea');
     inputLabel.textContent = 'Enter key:';
-
+    buttonsDiv.appendChild(button);
     cont.appendChild(inputLabel);
     cont.appendChild(keyInput);
     inputDiv.appendChild(cont);
   }
 }
 
-function inputHandler() {
+function encryptHandler() {
   const input = document.querySelector('.inputTextarea');
   const output = document.querySelector('.outputTextarea');
   const cipherSelect = document.querySelector('#cipher-select');
   const selectedCipher = cipherSelect.value;
   const inputValue = input.value;
   const inputDiv = document.querySelector('.inputDiv');
-  const cont = document.createElement('div');
-  let keyInput = null;
+  const keyInput = document.querySelector('.keyInput');
+  const keyValue = keyInput.value;
 
-  if (selectedCipher === 'aes' || selectedCipher === 'des' || selectedCipher === 'rc4') {
-    keyInput = document.createElement('input');
-    keyInput.classList = 'keyInput';
-    keyInput.setAttribute('name', 'additionalInputTextarea');
-
-    const inputLabel = document.createElement('label');
-    inputLabel.setAttribute('for', 'additionalInputTextarea');
-    inputLabel.textContent = 'Enter key:';
-
-    cont.appendChild(inputLabel);
-    cont.appendChild(keyInput);
-    inputDiv.appendChild(cont);
-  } else if (cont) {
-    cont.remove();
+  output.innerHTML = '';
+  if (selectedCipher === 'aes') {
+    output.value = ciphers.encryptAES(inputValue, keyValue);
+  } else if (selectedCipher === 'des') {
+    output.value = ciphers.encryptDES(inputValue, keyValue);
+  } else if (selectedCipher === 'rc4') {
+    output.value = ciphers.encryptRC4(inputValue, keyValue);
   }
+//   console.log(inputValue);
+//   console.log(selectedCipher);
+}
 
-  console.log(inputValue);
-  console.log(selectedCipher);
+function decryptHandler() {
+  const input = document.querySelector('.inputTextarea');
+  const output = document.querySelector('.outputTextarea');
+  const cipherSelect = document.querySelector('#cipher-select');
+  const selectedCipher = cipherSelect.value;
+  const inputValue = input.value;
+  const inputDiv = document.querySelector('.inputDiv');
+  const keyInput = document.querySelector('.keyInput');
+  const keyValue = keyInput.value;
+
+  output.innerHTML = '';
+  if (selectedCipher === 'aes') {
+    output.value = ciphers.decryptAES(inputValue, keyValue);
+  } else if (selectedCipher === 'des') {
+    output.value = ciphers.decryptDES(inputValue, keyValue);
+  } else if (selectedCipher === 'rc4') {
+    output.value = ciphers.decryptRC4(inputValue, keyValue);
+  }
+  //   console.log(inputValue);
+  //   co
 }
 
 function webInit() {
