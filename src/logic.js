@@ -19,6 +19,7 @@ const ciphers = (() => {
       mode: CryptoJS.mode.CBC,
       padding: CryptoJS.pad.Pkcs7,
     });
+
     const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
     return decryptedText;
   };

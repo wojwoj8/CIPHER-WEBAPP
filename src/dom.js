@@ -5,7 +5,7 @@ function createHeader() {
   const title = document.createElement('h1');
 
   header.classList = 'header';
-  title.textContent = 'ENCODE/DECODE';
+  title.textContent = 'ENCRYPT/DECRYPT';
   header.appendChild(title);
 
   return header;
@@ -83,7 +83,7 @@ function createButtons() {
   const buttonsDiv = document.createElement('div');
   buttonsDiv.classList = 'buttonsDiv';
   const button = document.createElement('button');
-  button.textContent = 'encrypt';
+  button.textContent = 'Encrypt';
   button.classList = 'encryptButton';
   buttonsDiv.appendChild(button);
   button.addEventListener('click', encryptHandler);
@@ -106,7 +106,7 @@ function selectHandler() {
   if (selectedCipher === 'aes' || selectedCipher === 'des' || selectedCipher === 'rc4') {
     const button = document.createElement('button');
     button.classList = 'decryptButton';
-    button.textContent = 'decrypt';
+    button.textContent = 'Decrypt';
     button.addEventListener('click', decryptHandler);
     const cont = document.createElement('div');
     keyInput = document.createElement('input');
