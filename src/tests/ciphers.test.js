@@ -50,15 +50,3 @@ test('RC4 cipher', () => {
 
   expect(decrypted).toEqual(plaintext);
 });
-
-test('Base64', () => {
-  const plaintext = 'test1234';
-  const encoded = ciphers.toBase64(plaintext);
-  expect(encoded).toEqual('dGVzdDEyMzQ=');
-
-  const decoded = ciphers.fromBase64ToUtf8(encoded);
-  expect(decoded).toEqual(plaintext);
-
-  const decodedWrong = ciphers.fromBase64ToUtf8('test');
-  expect(decodedWrong).toEqual('provide base64 text');
-});

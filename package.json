@@ -1,27 +1,31 @@
 {
-  "name": "cipher-webapp",
+  "name": "encrypt-decrypt-webapp",
   "version": "1.0.0",
   "description": "ciphers: AES, MD5, RSA, ECC, QKD, Homomorphic Encryption",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode=development",
     "watch": "webpack --watch",
-    "watcht": "jest --watch --testPathPattern=src *.js webpack --watch"
+    "watcht": "jest --watch --testPathPattern=src *.js webpack --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wojwoj8/CIPHER-WEBAPP.git"
+    "url": "git+https://github.com/wojwoj8/ENCRYPT-DECRYPT-WEBAPP.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wojwoj8/CIPHER-WEBAPP/issues"
+    "url": "https://github.com/wojwoj8/ENCRYPT-DECRYPT-WEBAPP/issues"
   },
-  "homepage": "https://github.com/wojwoj8/CIPHER-WEBAPP#readme",
+  "homepage": "https://github.com/wojwoj8/ENCRYPT-DECRYPT-WEBAPP#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
     "babel-jest": "^29.5.0",
     "css-loader": "^6.7.3",
+    "gh-pages": "^5.0.0",
     "jest": "^29.5.0",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",

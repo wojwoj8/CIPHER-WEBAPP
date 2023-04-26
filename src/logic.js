@@ -67,22 +67,6 @@ const ciphers = (() => {
     return encryptedText;
   };
 
-  // Encryption base64,
-  const toBase64 = (plaintext) => {
-    const encoded = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(plaintext));
-    return encoded;
-  };
-
-  const fromBase64ToUtf8 = (encryptedText) => {
-    let decoded;
-    try {
-      decoded = CryptoJS.enc.Base64.parse(encryptedText).toString(CryptoJS.enc.Utf8);
-    } catch (typeError) {
-      return 'provide base64 text';
-    }
-    return decoded;
-  };
-
   return {
     encryptAES,
     decryptAES,
@@ -93,8 +77,6 @@ const ciphers = (() => {
     decryptDES,
     encryptRC4,
     decryptRC4,
-    toBase64,
-    fromBase64ToUtf8,
   };
 })();
 
