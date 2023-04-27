@@ -14,17 +14,10 @@ function createHeader() {
 
 function createMain() {
   const main = document.createElement('div');
-  //   const mainProjectTitle = document.createElement('h2');
   const mainContent = document.createElement('div');
 
   mainContent.classList = 'main-content';
-
-  //   mainProjectTitle.classList = 'main-title';
-  //   mainProjectTitle.textContent = '';
   main.classList = 'main';
-
-  //   main.appendChild(mainProjectTitle);
-
   main.appendChild(mainContent);
 
   return main;
@@ -142,7 +135,6 @@ function encryptHandler() {
   const cipherSelect = document.querySelector('#cipher-select');
   const selectedCipher = cipherSelect.value;
   const inputValue = input.value;
-  const inputDiv = document.querySelector('.inputDiv');
   const keyInput = document.querySelector('.keyInput');
   let keyValue;
   if (keyInput) {
@@ -173,7 +165,6 @@ function decryptHandler() {
   const cipherSelect = document.querySelector('#cipher-select');
   const selectedCipher = cipherSelect.value;
   const inputValue = input.value;
-  const inputDiv = document.querySelector('.inputDiv');
   const keyInput = document.querySelector('.keyInput');
   const keyValue = keyInput.value;
 
@@ -197,7 +188,6 @@ function webInit() {
   createMainContent();
   createButtons();
   downloadHandler();
-  // saveFile();
   return content;
 }
 export default webInit;
