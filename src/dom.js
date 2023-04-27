@@ -1,4 +1,5 @@
 import ciphers from './logic';
+import saveFile from './download';
 
 function createHeader() {
   const header = document.createElement('div');
@@ -81,6 +82,12 @@ function createMainContent() {
 function createButtons() {
   const main = document.querySelector('.main');
   const buttonsDiv = document.createElement('div');
+  const download = document.createElement('div');
+  download.classList = 'downloadDiv';
+  const downButt = document.createElement('button');
+  downButt.classList = 'downloadButt';
+  downButt.textContent = 'Download';
+  download.appendChild(downButt);
   buttonsDiv.classList = 'buttonsDiv';
   const button = document.createElement('button');
   button.textContent = 'Encrypt';
@@ -88,6 +95,12 @@ function createButtons() {
   buttonsDiv.appendChild(button);
   button.addEventListener('click', encryptHandler);
   main.appendChild(buttonsDiv);
+  main.appendChild(download);
+}
+
+function downloadHandler() {
+  const button = document.querySelector('.downloadButt');
+  button.addEventListener('click', saveFile);
 }
 function selectHandler() {
   const cipherSelect = document.querySelector('#cipher-select');
@@ -183,6 +196,8 @@ function webInit() {
   content.appendChild(createFooter());
   createMainContent();
   createButtons();
+  downloadHandler();
+  // saveFile();
   return content;
 }
 export default webInit;
